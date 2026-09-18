@@ -1,35 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="5.0" method="upgrade">
+<extension type="component" version="6.0" method="upgrade">
     <name>COM_PHOTOORDERS</name>
-    <author>Your Name</author>
-    <creationDate>September 2026</creationDate>
+    <author>Benjamin Buenrostro</author>
+    <creationDate>2026</creationDate>
+    <copyright>Copyright (C) 2026. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>admin@example.com</authorEmail>
+    <authorUrl>www.example.com</authorUrl>
     <version>1.0.0</version>
-    <description>Photo Client Ordering System for Joomla 6</description>
+    <description>COM_PHOTOORDERS_XML_DESCRIPTION</description>
 
+    <!-- Namespace definition for PSR-4 autoloading -->
     <namespace path="src">YourVendor\Component\Photoorders</namespace>
 
-    <files folder="src">
-        <folder>Controller</folder>
-        <folder>Extension</folder>
-        <folder>Model</folder>
-        <folder>View</folder>
-    </files>
-
-    <services>
-        <service file="services/provider.php"/>
-    </services>
-
+    <!-- Database installation scripts -->
     <install>
         <sql>
             <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
         </sql>
     </install>
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
 
+    <!-- Site / Frontend Files -->
+    <files folder="src">
+        <folder>Controller</folder>
+        <folder>Extension</folder>
+        <folder>Field</folder>
+        <folder>Helper</folder>
+        <folder>Model</folder>
+        <folder>Table</folder>
+        <folder>View</folder>
+        <filename>photoorders.xml</filename>
+    </files>
+
+    <!-- Administration / Backend Files & Navigation -->
     <administration>
-        <menu link="option=com_photoorders">Photo Orders</menu>
+        <!-- Backend Menu Configuration -->
+        <menu link="option=com_photoorders">COM_PHOTOORDERS</menu>
         <submenu>
-            <menu link="option=com_photoorders&amp;view=albums">Albums</menu>
-            <menu link="option=com_photoorders&amp;view=orders">Orders Report</menu>
+            <menu link="option=com_photoorders&amp;view=albums">COM_PHOTOORDERS_SUBMENU_ALBUMS</menu>
+            <menu link="option=com_photoorders&amp;view=reports">COM_PHOTOORDERS_SUBMENU_REPORTS</menu>
         </submenu>
+
+        <files folder="services">
+            <folder>provider.php</folder>
+        </files>
     </administration>
 </extension>
